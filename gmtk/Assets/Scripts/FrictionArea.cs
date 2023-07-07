@@ -35,7 +35,7 @@ public class FrictionArea : MonoBehaviour
         gameManager.FrictionAreaEntered(this);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         gameManager.FrictionAreaExited(this);
     }

@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
 
     public void FrictionAreaExited(FrictionArea frictionArea)
     {
-        if(frictionArea == currentFrictionArea)
+        Debug.Log("yo whatup");
+        if (frictionArea == currentFrictionArea)
         {
             playerController.playerRigidbody.drag = defaultDrag;
             playerController.playerRigidbody.angularDrag = defaultAngularDrag;
