@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ICollidable : MonoBehaviour
 {
-    [SerializeField] float timePenalty = 0;
+    [SerializeField] SpriteRenderer collidableRenderer;
+    [SerializeField] Sprite damagedSprite;
+    [SerializeField] AudioSource hitSound;
+    [SerializeField] float penalty = 0;
 
-    public float GetTimePenalty()
+    public float Collide()
     {
-        return timePenalty;
-    }
+        if (damagedSprite != null)
+        {
+            collidableRenderer.sprite = damagedSprite;
+        }
+        if (hitSound != null)
+        {
+            hitSound.Play();
+        }
 
-    public void Collide()
-    {
-        // Do nothing
+        return penalty;
     }
 }
