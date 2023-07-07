@@ -1,1 +1,74 @@
-{}
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "1d9c88fb-b794-448f-9c23-be9d0241b08b",
+            "actions": [
+                {
+                    "name": "Left Kick",
+                    "type": "Button",
+                    "id": "d7b720cf-c874-46ae-b78f-67eba736f043",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Kick",
+                    "type": "Button",
+                    "id": "a90e6ec3-0ffa-4ade-aaea-a2d254a5566f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "3f01db1b-934c-4792-af81-d4d2d62757d6",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "65bf2623-6a2c-49cb-9f2d-fc582dceaa54",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "342b1e83-b63d-4ab3-9d2b-9c1e70453aea",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e75febb-294b-4565-830d-394bba4b5dd0",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
