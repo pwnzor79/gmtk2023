@@ -38,8 +38,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+
     }
+
+    /*
+    private void OnCollisionEnter2D(Collider2D collision)
+    {
+        FrictionArea frictionArea = collision.GetComponent<FrictionArea>();
+
+        if (frictionArea != null)
+        {
+            Debug.Log("we are experiencing friction of value " + frictionArea.friction);
+            playerRigidbody.drag = frictionArea.friction;
+        }
+    }
+    */
 
     public void leftKick(InputAction.CallbackContext context)
     {
@@ -47,14 +60,14 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        Debug.Log("left kick");
+        //Debug.Log("left kick");
         leftKickForce = (mouse.transform.position - this.transform.position).normalized * -forceMultiplier;
         playerRigidbody.AddForceAtPosition(leftKickForce, leftPoint.transform.position, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
     }
 
     public void rightKick(InputAction.CallbackContext context)
     {
-        Debug.Log("right kick");
+        //Debug.Log("right kick");
         rightKickForce = (mouse.transform.position - this.transform.position).normalized * -forceMultiplier;
         playerRigidbody.AddForceAtPosition(rightKickForce, rightPoint.transform.position, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
     }

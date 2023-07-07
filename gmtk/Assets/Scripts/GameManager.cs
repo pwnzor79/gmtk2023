@@ -11,6 +11,15 @@ public class GameManager : MonoBehaviour
     public int health;
     public int score;
 
+    [SerializeField]
+    public PlayerController playerController;
+
+    public FrictionArea currentFrictionArea;
+
+    //STORE THE DEFAULT VALUES FOR PLAYER DRAG
+    public float defaultDrag;
+    public float defaultAngularDrag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +32,26 @@ public class GameManager : MonoBehaviour
         
     }
 
+    //takes a friction area, which calls gamemanager.updatefrictionarea.this
+    public void FrictionAreaEntered(FrictionArea frictionArea)
+    {
+        currentFrictionArea = frictionArea;
+        playerController.playerRigidbody.drag = frictionArea.friction;
+        playerController.playerRigidbody.angularDrag = frictionArea.angularFriction;
+    }
+
+    public void FrictionAreaExited(FrictionArea frictionArea)
+    {
+        if(frictionArea == currentFrictionArea)
+        {
+            playerController.playerRigidbody.drag = defaultDrag;
+            playerController.playerRigidbody.angularDrag = defaultAngularDrag;
+        }
+    }
+
     void Awake()
     {
-        if(instance == null)
+        if(instance != null)
         {
             Destroy(this.gameObject);
         }

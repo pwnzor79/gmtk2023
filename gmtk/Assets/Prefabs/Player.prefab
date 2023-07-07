@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4957829649813574938}
   - component: {fileID: 4383127260179920885}
   - component: {fileID: 7209220311261998392}
+  - component: {fileID: 5028706046374055980}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -257,3 +258,19 @@ MonoBehaviour:
   mouse: {fileID: 0}
   leftKickForce: {x: 0, y: 0}
   rightKickForce: {x: 0, y: 0}
+--- !u!58 &5028706046374055980
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476616805534831958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.21133333}
+  serializedVersion: 2
+  m_Radius: 0.5
