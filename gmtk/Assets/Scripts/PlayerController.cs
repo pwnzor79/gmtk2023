@@ -43,16 +43,20 @@ public class PlayerController : MonoBehaviour
 
     public void leftKick(InputAction.CallbackContext context)
     {
+        if(!context.started)
+        {
+            return;
+        }
         Debug.Log("left kick");
-        leftKickForce = (mouse.transform.position - this.transform.position).normalized * forceMultiplier;
-        playerRigidbody.AddForceAtPosition(leftKickForce, leftPoint.transform.position); //get vector between player and mouse (mouse-player) normalize, multiply by force value
+        leftKickForce = (mouse.transform.position - this.transform.position).normalized * -forceMultiplier;
+        playerRigidbody.AddForceAtPosition(leftKickForce, leftPoint.transform.position, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
     }
 
     public void rightKick(InputAction.CallbackContext context)
     {
         Debug.Log("right kick");
-        rightKickForce = (mouse.transform.position - this.transform.position).normalized * forceMultiplier;
-        playerRigidbody.AddForceAtPosition(rightKickForce, rightPoint.transform.position); //get vector between player and mouse (mouse-player) normalize, multiply by force value
+        rightKickForce = (mouse.transform.position - this.transform.position).normalized * -forceMultiplier;
+        playerRigidbody.AddForceAtPosition(rightKickForce, rightPoint.transform.position, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
     }
 
 }
