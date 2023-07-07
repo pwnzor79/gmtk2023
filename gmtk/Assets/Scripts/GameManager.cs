@@ -25,13 +25,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if(instace == null)
+        if(instance == null)
         {
-            destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
-            instance = this.gameObject;
+            instance = this;
         }
 
     }
