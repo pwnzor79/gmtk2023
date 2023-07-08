@@ -202,9 +202,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7209220311261998392}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: leftKick
+        m_MethodName: leftFoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -218,9 +218,9 @@ MonoBehaviour:
     m_ActionName: Player/Left Kick
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7209220311261998392}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: rightKick
+        m_MethodName: rightFoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -236,6 +236,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3f01db1b-934c-4792-af81-d4d2d62757d6
     m_ActionName: Player/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7095fa7b-381a-405e-839d-063b5ed5fed3
+    m_ActionName: Player/Brake[/Keyboard/space,/Mouse/middleButton,/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -256,12 +260,12 @@ MonoBehaviour:
   rollingRigidbody: {fileID: 4957829649813574938}
   leftPoint: {fileID: 2476616804610301023}
   rightPoint: {fileID: 2476616804180765214}
-  leftBrake: {fileID: 0}
-  rightBrake: {fileID: 0}
+  leftBrake: {fileID: 6618875995884648780}
+  rightBrake: {fileID: 3141671467586464589}
   forceMultiplier: 1
-  brakeMultiplier: 0
-  torqueMultiplier: 0
-  kickableAngle: 0
+  brakeMultiplier: 20
+  torqueMultiplier: 0.5
+  kickableAngle: 250
   mouse: {fileID: 0}
 --- !u!58 &5028706046374055980
 CircleCollider2D:

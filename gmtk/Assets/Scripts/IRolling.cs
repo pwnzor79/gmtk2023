@@ -12,7 +12,7 @@ public class IRolling : MonoBehaviour
     virtual protected void Start()
     {
         gameManager = GameManager.instance;
-        Debug.Log(gameManager);
+        ResetFriction();
     }
 
     public void FrictionAreaEntered(FrictionArea frictionArea)
@@ -26,8 +26,13 @@ public class IRolling : MonoBehaviour
     {
         if (frictionArea = currentArea)
         {
-            rollingRigidbody.drag = gameManager.defaultDrag;
-            rollingRigidbody.angularDrag = gameManager.defaultAngularDrag;
+            ResetFriction();
         }
+    }
+
+    private void ResetFriction()
+    {
+        rollingRigidbody.drag = gameManager.defaultDrag;
+        rollingRigidbody.angularDrag = gameManager.defaultAngularDrag;
     }
 }
