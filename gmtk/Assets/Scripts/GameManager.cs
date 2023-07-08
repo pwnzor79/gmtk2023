@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public float time;
-    public int health;
+    public int damage;
     public int score;
 
     [SerializeField]
