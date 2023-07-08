@@ -25,23 +25,23 @@ public class FrictionArea : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("we are enforcing friction of value " + friction);
 
-        //gameManager.playerController.playerRigidbody.drag = friction;
-        //gameManager.playerController.playerRigidbody.angularDrag = angularFriction;
-
-        gameManager.FrictionAreaEntered(this);
+        IRolling rollingObject = other.GetComponent<IRolling>();
+        if (rollingObject != null)
+        {
+            rollingObject.FrictionAreaEntered(this);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        gameManager.FrictionAreaExited(this);
-    }
-
-    public float getFriction()
-    {
-        return friction;
+        IRolling rollingObject = other.GetComponent<IRolling>();
+        if (rollingObject != null)
+        {
+            rollingObject.FrictionAreaExited(this);
+        }
     }
 }

@@ -595,6 +595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2476616805534831959, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2476616805534831960, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -655,10 +659,6 @@ PrefabInstance:
       propertyPath: mouse
       value: 
       objectReference: {fileID: 1702159866}
-    - target: {fileID: 7209220311261998392, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
-      propertyPath: forceMultiplier
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7209220311261998392, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: playerRigidbody
       value: 

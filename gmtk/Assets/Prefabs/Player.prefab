@@ -251,10 +251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1d0efbf29d43547aabe71dcdad63f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rollingRigidbody: {fileID: 4957829649813574938}
   leftPoint: {fileID: 2476616804610301023}
   rightPoint: {fileID: 2476616804180765214}
-  playerRigidbody: {fileID: 0}
-  forceMultiplier: 0
+  forceMultiplier: 1
   mouse: {fileID: 0}
   leftKickForce: {x: 0, y: 0}
   rightKickForce: {x: 0, y: 0}

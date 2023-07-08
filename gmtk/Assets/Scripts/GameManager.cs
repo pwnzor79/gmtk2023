@@ -32,24 +32,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    //takes a friction area, which calls gamemanager.updatefrictionarea.this
-    public void FrictionAreaEntered(FrictionArea frictionArea)
-    {
-        currentFrictionArea = frictionArea;
-        playerController.playerRigidbody.drag = frictionArea.friction;
-        playerController.playerRigidbody.angularDrag = frictionArea.angularFriction;
-    }
-
-    public void FrictionAreaExited(FrictionArea frictionArea)
-    {
-        Debug.Log("yo whatup");
-        if (frictionArea == currentFrictionArea)
-        {
-            playerController.playerRigidbody.drag = defaultDrag;
-            playerController.playerRigidbody.angularDrag = defaultAngularDrag;
-        }
-    }
-
     void Awake()
     {
         if(instance != null)
