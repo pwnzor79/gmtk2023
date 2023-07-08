@@ -100,6 +100,16 @@ public class PlayerController : IRolling
         return amount * -rollingRigidbody.transform.up;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ICollidable collidable = collision.collider.gameObject.GetComponent<ICollidable>();
+        if (collidable != null)
+        {
+            collidable.Collide();
+        }
+    }
+
+
     private IEnumerator Brake(Vector3 brakePoint, Vector2 mouseVector)
     {
         /*

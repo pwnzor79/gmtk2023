@@ -30,6 +30,9 @@ public class Patrol : MonoBehaviour
             foreach (Vector2 point in patrolPoints)
             {
                 target = point + initPos;
+                Vector2 lookDirection = target - body.position;
+
+                body.rotation += Vector2.Angle(body.transform.forward, lookDirection);
                 while (body.position != target)
                 {
                     step = speed * Time.deltaTime;
