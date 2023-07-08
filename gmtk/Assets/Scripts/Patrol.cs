@@ -10,6 +10,8 @@ public class Patrol : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float waitTime;
     [SerializeField] private Rigidbody2D body;
+    [SerializeField] private Animator animator;
+
 
     Vector2 initPos;
 
@@ -32,13 +34,15 @@ public class Patrol : MonoBehaviour
                 target = point + initPos;
                 Vector2 lookDirection = target - body.position;
 
-                body.rotation += Vector2.Angle(body.transform.forward, lookDirection);
+                body.rotation += Vector2.Angle(body.transform.up, lookDirection);
+                animator.SetBool("Walk", true);
                 while (body.position != target)
                 {
                     step = speed * Time.deltaTime;
                     body.position = Vector2.MoveTowards(body.position, target, step);
                     yield return null;
                 }
+                animator.SetBool("Walk", false);
                 yield return new WaitForSeconds(waitTime);
             }
         }
