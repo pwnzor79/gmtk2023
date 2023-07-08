@@ -12,7 +12,16 @@ public class PlayerController : IRolling
     public GameObject rightPoint;
 
     [SerializeField]
+    public GameObject leftBrake;
+
+    [SerializeField]
+    public GameObject rightBrake;
+
+    [SerializeField]
     public float forceMultiplier;
+
+    [SerializeField]
+    public float brakeMultiplier;
 
     [SerializeField] private float torqueMultiplier;
 
@@ -23,42 +32,93 @@ public class PlayerController : IRolling
 
     private float kickableDotProduct;
 
+    private bool leftFootDown = false;
+    private bool rightFootDown = false;
+
+
+
     override protected void Start()
     {
         base.Start();
         kickableDotProduct = Mathf.Abs(Mathf.Cos(kickableAngle));
     }
 
-
-
-    public void leftKick(InputAction.CallbackContext context)
+    public void leftFoot(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Kick(leftPoint.transform.position);
+            leftFootDown = true;
+            AddForce(leftPoint.transform.position);
+        }
+        if (context.canceled)
+        {
+            leftFootDown = false;
         }
     }
 
-    public void rightKick(InputAction.CallbackContext context)
+    public void rightFoot(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Kick(rightPoint.transform.position);
+            leftFootDown = true;
+            AddForce(rightPoint.transform.position);
+        }
+        if (context.canceled)
+        {
+            leftFootDown = false;
         }
     }
 
-    private void Kick(Vector3 kickPoint)
+    public void EngageBrake(InputAction.CallbackContext context)
     {
-        Vector2 mouseVector = mouse.transform.position - kickPoint;
-        float dot = Vector2.Dot(mouseVector.normalized, -rollingRigidbody.transform.up.normalized);
-        //Debug.Log(dot + " " + kickableDotProduct);
-        if (dot >= kickableDotProduct)
-        {
-            rollingRigidbody.angularVelocity = 0;
+   
+    }
 
-            Vector2 kickForce = mouseVector.normalized * -forceMultiplier;
-            rollingRigidbody.AddForceAtPosition(kickForce, kickPoint, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
+    private void AddForce(Vector3 forcePoint)
+    {
+        Vector2 mouseVector = mouse.transform.position - forcePoint;
+        Vector2 force;
+        if (Vector2.Angle(-rollingRigidbody.transform.up, mouseVector) < kickableAngle / 2)
+        {
+            force = CalculateKickForce(forcePoint, mouseVector);
+            rollingRigidbody.AddForceAtPosition(force, forcePoint, ForceMode2D.Impulse);
         }
+        else
+        {
+            StartCoroutine(Brake(forcePoint, mouseVector));
+        }
+    }
+
+    private Vector2 CalculateKickForce(Vector3 kickPoint, Vector2 mouseVector)
+    {
+        return mouseVector.normalized * -forceMultiplier;
+    }
+
+    private Vector2 CalculateBrakeForce(Vector3 brakePoint, Vector2 mouseVector)
+    {
+        float amount = Mathf.Min(brakeMultiplier, Vector2.Dot(rollingRigidbody.transform.up, rollingRigidbody.GetRelativePointVelocity(brakePoint)));
+        return amount * -rollingRigidbody.transform.up;
+    }
+
+    private IEnumerator Brake(Vector3 brakePoint, Vector2 mouseVector)
+    {
+        /*
+        while (leftFootDown || rightFootDown)
+        {
+            if (leftFootDown)
+            {
+                Vector2 force = CalculateBrakeForce(leftBrake.transform.position, mouseVector);
+                rollingRigidbody.AddForceAtPosition(force, leftBrake.transform.position, ForceMode2D.Force);
+            }
+            if (rightFootDown)
+            {
+                Vector2 force = CalculateBrakeForce(rightBrake.transform.position, mouseVector);
+                rollingRigidbody.AddForceAtPosition(force, rightBrake.transform.position, ForceMode2D.Force);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+        */
+        yield return null;
     }
 
 }
