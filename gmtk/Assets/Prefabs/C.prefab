@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 3168943459017255904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.9349942, y: 0.91670597, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorBody: {fileID: 8972322539217287214}
+  mainCamera: {fileID: 0}
 --- !u!114 &4311478296715295350
 MonoBehaviour:
   m_ObjectHideFlags: 0
