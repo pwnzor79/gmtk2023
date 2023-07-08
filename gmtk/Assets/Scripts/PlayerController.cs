@@ -14,29 +14,51 @@ public class PlayerController : IRolling
     [SerializeField]
     public float forceMultiplier;
 
+    [SerializeField] private float torqueMultiplier;
+
+    [SerializeField] private float kickableAngle;
+
     [SerializeField]
     public GameObject mouse;
 
-    public Vector2 leftKickForce;
-    public Vector2 rightKickForce;
+    private float kickableDotProduct;
+
+    override protected void Start()
+    {
+        base.Start();
+        kickableDotProduct = Mathf.Abs(Mathf.Cos(kickableAngle));
+    }
+
 
 
     public void leftKick(InputAction.CallbackContext context)
     {
-        if(!context.started)
+        if (context.started)
         {
-            return;
+            Kick(leftPoint.transform.position);
         }
-        //Debug.Log("left kick");
-        leftKickForce = (mouse.transform.position - this.transform.position).normalized * -forceMultiplier;
-        rollingRigidbody.AddForceAtPosition(leftKickForce, leftPoint.transform.position, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
     }
 
     public void rightKick(InputAction.CallbackContext context)
     {
-        //Debug.Log("right kick");
-        rightKickForce = (mouse.transform.position - this.transform.position).normalized * -forceMultiplier;
-        rollingRigidbody.AddForceAtPosition(rightKickForce, rightPoint.transform.position, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
+        if (context.started)
+        {
+            Kick(rightPoint.transform.position);
+        }
+    }
+
+    private void Kick(Vector3 kickPoint)
+    {
+        Vector2 mouseVector = mouse.transform.position - kickPoint;
+        float dot = Vector2.Dot(mouseVector.normalized, -rollingRigidbody.transform.up.normalized);
+        //Debug.Log(dot + " " + kickableDotProduct);
+        if (dot >= kickableDotProduct)
+        {
+            rollingRigidbody.angularVelocity = 0;
+
+            Vector2 kickForce = mouseVector.normalized * -forceMultiplier;
+            rollingRigidbody.AddForceAtPosition(kickForce, kickPoint, ForceMode2D.Impulse); //get vector between player and mouse (mouse-player) normalize, multiply by force value
+        }
     }
 
 }

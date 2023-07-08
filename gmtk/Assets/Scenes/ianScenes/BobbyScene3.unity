@@ -372,8 +372,8 @@ MonoBehaviour:
   score: 0
   playerController: {fileID: 1532110346}
   currentFrictionArea: {fileID: 0}
-  defaultDrag: 0
-  defaultAngularDrag: 0.05
+  defaultDrag: 1
+  defaultAngularDrag: 3
 --- !u!4 &257154610
 Transform:
   m_ObjectHideFlags: 0
@@ -888,29 +888,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2476616804180765215, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.093
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476616804180765215, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.106
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476616804610300992, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476616804610300992, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.106
+      objectReference: {fileID: 0}
     - target: {fileID: 2476616805534831958, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476616805534831959, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 650c7f1e66a66cf449b177395e3a5594, type: 3}
-    - target: {fileID: 2476616805534831959, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476616805534831959, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476616805534831959, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2476616805534831959, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2476616805534831960, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: m_RootOrder
@@ -930,11 +926,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2476616805534831960, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.875
+      value: -5.09
       objectReference: {fileID: 0}
     - target: {fileID: 2476616805534831960, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.1209
+      value: -2.242
       objectReference: {fileID: 0}
     - target: {fileID: 2476616805534831960, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -981,8 +977,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1702159866}
     - target: {fileID: 7209220311261998392, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: kickableAngle
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209220311261998392, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: forceMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209220311261998392, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
       propertyPath: playerRigidbody
       value: 
       objectReference: {fileID: 1532110347}
+    - target: {fileID: 7209220311261998392, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: torqueMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209220311261998392, guid: ceade02d044b97a41a5121b36e36691c, type: 3}
+      propertyPath: faceCursorConeAngle
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceade02d044b97a41a5121b36e36691c, type: 3}

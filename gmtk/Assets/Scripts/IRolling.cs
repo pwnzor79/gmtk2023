@@ -9,9 +9,10 @@ public class IRolling : MonoBehaviour
     private GameManager gameManager;
     private FrictionArea currentArea;
 
-    private void Start()
+    virtual protected void Start()
     {
         gameManager = GameManager.instance;
+        Debug.Log(gameManager);
     }
 
     public void FrictionAreaEntered(FrictionArea frictionArea)
