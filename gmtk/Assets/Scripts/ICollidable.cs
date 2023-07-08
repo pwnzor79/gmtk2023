@@ -6,6 +6,7 @@ public class ICollidable : MonoBehaviour
 {
     [SerializeField] SpriteRenderer collidableRenderer;
     [SerializeField] Sprite damagedSprite;
+    [SerializeField] GameObject otherObject;
     [SerializeField] AudioSource hitSound;
     [SerializeField] float penalty = 0;
 
@@ -18,6 +19,11 @@ public class ICollidable : MonoBehaviour
         if (hitSound != null)
         {
             hitSound.Play();
+        }
+        if (otherObject != null)
+        {
+            otherObject.SetActive(true);
+            this.gameObject.SetActive(false);
         }
 
         return penalty;
