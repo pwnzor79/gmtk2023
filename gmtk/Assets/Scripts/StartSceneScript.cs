@@ -51,7 +51,7 @@ public class StartSceneScript : MonoBehaviour
         {
             GameManager.instance.time = 60;
         }
-
+        GameManager.instance.damage = 0;
         SceneManager.LoadScene(GameManager.instance.currentLevel);
     }
 }
