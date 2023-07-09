@@ -842,8 +842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 669202409}
-  time: 1
-  grade: 0
+  time: 0
+  grade: 1
   A: {fileID: 148003156}
   B: {fileID: 1805095277}
   C: {fileID: 1704667001}
@@ -1084,8 +1084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1167789072}
-  time: 1
-  grade: 0
+  time: 0
+  grade: 1
   A: {fileID: 148003156}
   B: {fileID: 1805095277}
   C: {fileID: 1704667001}
