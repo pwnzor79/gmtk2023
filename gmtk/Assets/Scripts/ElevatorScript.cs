@@ -11,6 +11,8 @@ public class ElevatorScript : MonoBehaviour
 
     public float nextLevelTime;
 
+    public int thisLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,6 @@ public class ElevatorScript : MonoBehaviour
     {
         GameManager.instance.currentLevel = nextLevel;
         GameManager.instance.damage = 0;
-        GameManager.instance.time = nextLevelTime;
-        SceneManager.LoadScene("Floor2");
+        GameManager.instance.loadScene(nextLevel, nextLevelTime, thisLevel);
     }
 }
