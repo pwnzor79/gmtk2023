@@ -8,9 +8,9 @@ public class ICollidable : MonoBehaviour
     [SerializeField] Sprite damagedSprite;
     [SerializeField] GameObject otherObject;
     [SerializeField] AudioSource hitSound;
-    [SerializeField] float penalty = 0;
+    [SerializeField] int penalty = 0;
 
-    public float Collide()
+    public int Collide()
     {
         if (damagedSprite != null)
         {

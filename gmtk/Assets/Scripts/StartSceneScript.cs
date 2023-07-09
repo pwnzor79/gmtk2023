@@ -20,7 +20,7 @@ public class StartSceneScript : MonoBehaviour
     public void StartGame()
     {
         //SceneManager.LoadScene("Floor1");
-        SceneManager.LoadScene("BobbyScene1");
+        SceneManager.LoadScene("Test Level");
     }
 
     public void QuitGame()

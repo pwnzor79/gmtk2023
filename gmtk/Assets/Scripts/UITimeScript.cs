@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UITimeScript : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class UITimeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -30,5 +31,10 @@ public class UITimeScript : MonoBehaviour
         timeRemaining -= Time.deltaTime;
         text.text = (timeRemaining + " / " + levelTime);
         //text.text = "text";
+
+        if(timeRemaining <= 0)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 }

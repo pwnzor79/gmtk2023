@@ -478,7 +478,7 @@ MonoBehaviour:
   damagedSprite: {fileID: 0}
   otherObject: {fileID: 7636531357405873753}
   hitSound: {fileID: 0}
-  penalty: 0
+  penalty: 1
 --- !u!61 &7636531358067268660
 BoxCollider2D:
   m_ObjectHideFlags: 0

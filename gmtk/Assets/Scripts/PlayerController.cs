@@ -134,7 +134,7 @@ public class PlayerController : IRolling
         ICollidable collidable = collision.collider.gameObject.GetComponent<ICollidable>();
         if (collidable != null)
         {
-            collidable.Collide();
+            GameManager.instance.damage += collidable.Collide();
         }
     }
 
