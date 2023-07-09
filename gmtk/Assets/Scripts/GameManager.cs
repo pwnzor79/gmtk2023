@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int damage;
     public int score;
     public float[] times;
+    public int[] damages;
 
     [SerializeField]
     public PlayerController playerController;
@@ -41,12 +42,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         times = new float[2];
+        damages = new int[2];
     }
 
     public void loadScene(string sceneName, float time, int pastLevel)
     {
         SceneManager.LoadScene(sceneName);
         times[pastLevel - 1] = this.time;
+        damages[pastLevel - 1] = damage;
+        damage = 0;
         this.time = time;
 
     }

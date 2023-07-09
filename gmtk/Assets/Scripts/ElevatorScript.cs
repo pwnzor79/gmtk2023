@@ -28,7 +28,6 @@ public class ElevatorScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameManager.instance.currentLevel = nextLevel;
-        GameManager.instance.damage = 0;
         GameManager.instance.loadScene(nextLevel, nextLevelTime, thisLevel);
     }
 }

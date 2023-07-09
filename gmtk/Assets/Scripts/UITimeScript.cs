@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class UITimeScript : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class UITimeScript : MonoBehaviour
     {
         //https://docs.unity3d.com/2017.1/Documentation/ScriptReference/UI.Text-text.html
         timeRemaining -= Time.deltaTime;
-        text.text = (timeRemaining + " / " + levelTime);
+        text.text = ($"{timeRemaining:F2} / " + levelTime);
         //text.text = "text";
 
         if(timeRemaining <= 0)
