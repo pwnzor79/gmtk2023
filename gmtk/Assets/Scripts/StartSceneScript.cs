@@ -39,6 +39,19 @@ public class StartSceneScript : MonoBehaviour
     public void RestartLevel()
     {
         //give gameManager a string for level name, and have it maintain its current level, go to this level.
+        if(GameManager.instance.currentLevel == "Test Scene")
+        {
+            GameManager.instance.time = 200;
+        }
+        else if(GameManager.instance.currentLevel == "Floor2")
+        {
+            GameManager.instance.time = 80;
+        }
+        else
+        {
+            GameManager.instance.time = 60;
+        }
+
         SceneManager.LoadScene(GameManager.instance.currentLevel);
     }
 }
