@@ -9,6 +9,8 @@ public class ElevatorScript : MonoBehaviour
 
     public string nextLevel;
 
+    public float nextLevelTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class ElevatorScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameManager.instance.currentLevel = nextLevel;
+        GameManager.instance.damage = 0;
+        GameManager.instance.time = nextLevelTime;
         SceneManager.LoadScene("Floor2");
     }
 }

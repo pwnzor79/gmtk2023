@@ -4191,7 +4191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3481fa58772fe7246b8fafc380d1e690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: 
+  nextLevel: WinScene
+  nextLevelTime: 60
 --- !u!1001 &1061746890
 PrefabInstance:
   m_ObjectHideFlags: 0
