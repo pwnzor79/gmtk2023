@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,9 +33,7 @@ public class PlayerController : IRolling
 
     [SerializeField] private GameObject leftLeg;
     [SerializeField] private GameObject rightLeg;
-    [SerializeField] private float maxLegAngle;
-    [SerializeField] private float legRotationSpeed;
-
+    [SerializeField] private float legSpeed;
 
     private bool canKick;
 
@@ -51,25 +50,24 @@ public class PlayerController : IRolling
         kickableDotProduct = Mathf.Abs(Mathf.Cos(kickableAngle));
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector2 mouseVector = mouse.transform.position - rollingRigidbody.transform.position;
-        Debug.Log(Vector2.Angle(-rollingRigidbody.transform.up, mouseVector));
-
-        Vector3 targetRotation;
-        if (Vector2.Angle(-rollingRigidbody.transform.up, mouseVector) < maxLegAngle / 2)
+        canKick = (Vector2.Angle(-rollingRigidbody.transform.up, mouseVector) < kickableAngle / 2);
+        float targetAngle;
+        float currentAngle = leftLeg.transform.localEulerAngles.z;
+        if (canKick)
         {
-            targetRotation = Quaternion.LookRotation(-Vector3.forward, -mouseVector).eulerAngles;
+            targetAngle = Vector2.SignedAngle(-rollingRigidbody.transform.up, mouseVector);
         }
         else
         {
-            targetRotation = this.transform.rotation.eulerAngles;
+            targetAngle = 0;
         }
-        
-        float newRotationZ = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetRotation.z, Time.deltaTime * legRotationSpeed);
-        Vector3 newRotation = new Vector3(0, 0, newRotationZ);
-        leftLeg.transform.eulerAngles = newRotation;
-        rightLeg.transform.eulerAngles = newRotation;
+        float angle = Mathf.LerpAngle(currentAngle, targetAngle, Time.deltaTime * legSpeed);
+        Debug.Log(angle);
+        leftLeg.transform.localEulerAngles = new Vector3(0, 0, angle);
+        rightLeg.transform.localEulerAngles = leftLeg.transform.localEulerAngles;
     }
 
     public void leftFoot(InputAction.CallbackContext context)
@@ -107,7 +105,7 @@ public class PlayerController : IRolling
     {
         Vector2 mouseVectorToHips = mouse.transform.position - forcePoint;
         Vector2 force;
-        if (Vector2.Angle(-rollingRigidbody.transform.up, mouseVectorToHips) < kickableAngle / 2)
+        if (canKick)
         {
             force = CalculateKickForce(forcePoint, mouseVectorToHips);
             rollingRigidbody.AddForceAtPosition(force, forcePoint, ForceMode2D.Impulse);
@@ -134,7 +132,7 @@ public class PlayerController : IRolling
         ICollidable collidable = collision.collider.gameObject.GetComponent<ICollidable>();
         if (collidable != null)
         {
-            GameManager.instance.damage += collidable.Collide();
+            collidable.Collide();
         }
     }
 
