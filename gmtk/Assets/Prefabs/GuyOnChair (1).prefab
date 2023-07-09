@@ -154,4 +154,4 @@ MonoBehaviour:
   damagedSprite: {fileID: 0}
   otherObject: {fileID: 0}
   hitSound: {fileID: 0}
-  penalty: 3
+  penalty: 1

@@ -30,9 +30,6 @@ public class PlayerController : IRolling
 
     [SerializeField] private float spinMultiplier;
 
-    [SerializeField]
-    public float collideVelocity;
-
 
 
     [SerializeField] private float torqueMultiplier;
@@ -187,18 +184,6 @@ public class PlayerController : IRolling
         else
         {
             return RadianToVector2((kickableAngle / 2) * Mathf.Deg2Rad) * rollingRigidbody.transform.up * -forceMultiplier;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        ICollidable collidable = collision.collider.gameObject.GetComponent<ICollidable>();
-        if (collidable != null)
-        {
-            if (rollingRigidbody.velocity.magnitude >= collideVelocity)
-            {
-                gameManager.damage += collidable.Collide();
-            }
         }
     }
 

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class IRolling : MonoBehaviour
 {
-    [SerializeField] protected Rigidbody2D rollingRigidbody;
+    [SerializeField] public Rigidbody2D rollingRigidbody;
+
+    [SerializeField]
+    public float collideVelocity;
 
     protected GameManager gameManager;
     private FrictionArea currentArea;
@@ -34,5 +37,27 @@ public class IRolling : MonoBehaviour
     {
         rollingRigidbody.drag = gameManager.defaultDrag;
         rollingRigidbody.angularDrag = gameManager.defaultAngularDrag;
+    }
+
+    public void Boioioioing(Vector2 normal)
+    {
+        rollingRigidbody.velocity = Vector2.Reflect(rollingRigidbody.velocity, normal);
+        rollingRigidbody.transform.up = -rollingRigidbody.velocity;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ICollidable collidable = collision.collider.gameObject.GetComponent<ICollidable>();
+        if (collidable != null)
+        {
+            if (rollingRigidbody.velocity.magnitude >= collideVelocity)
+            {
+                int damage = collidable.Collide(this, collision.GetContact(0).normal);
+                if (this.gameObject.GetComponent<PlayerController>())
+                {
+                    gameManager.damage += damage;
+                }
+            }
+        }
     }
 }

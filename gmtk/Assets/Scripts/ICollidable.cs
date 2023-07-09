@@ -10,7 +10,7 @@ public class ICollidable : MonoBehaviour
     [SerializeField] AudioSource hitSound;
     [SerializeField] int penalty = 0;
 
-    public int Collide()
+    virtual public int Collide(IRolling rolling, Vector2 collisionNormal)
     {
         if (damagedSprite != null)
         {
@@ -25,7 +25,8 @@ public class ICollidable : MonoBehaviour
             otherObject.SetActive(true);
             this.gameObject.SetActive(false);
         }
-
-        return penalty;
+        int returnValue = penalty;
+        penalty = 0;
+        return returnValue;
     }
 }

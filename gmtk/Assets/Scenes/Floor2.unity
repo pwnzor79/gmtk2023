@@ -943,6 +943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -109.696
       objectReference: {fileID: 0}
+    - target: {fileID: 7385392181205417526, guid: f863804f1c5d54c28b942edc817c51a0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7385392181205417527, guid: f863804f1c5d54c28b942edc817c51a0, type: 3}
       propertyPath: m_Name
       value: deskNoComputer (36)
@@ -22706,6 +22710,22 @@ PrefabInstance:
     - target: {fileID: 2484159439985274830, guid: 9a5fec7ed5bab44a79140862cc7a497e, type: 3}
       propertyPath: orthographic size
       value: 6.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228217061401524430, guid: 9a5fec7ed5bab44a79140862cc7a497e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228217061401524430, guid: 9a5fec7ed5bab44a79140862cc7a497e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752080280062155838, guid: 9a5fec7ed5bab44a79140862cc7a497e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752080280062155838, guid: 9a5fec7ed5bab44a79140862cc7a497e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5fec7ed5bab44a79140862cc7a497e, type: 3}

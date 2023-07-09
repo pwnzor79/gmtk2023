@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4032484470909066195}
   - component: {fileID: 4032484470909066194}
   - component: {fileID: 4032484470909066193}
+  - component: {fileID: -4174355632521478116}
   m_Layer: 0
   m_Name: GuyStanding
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   damagedSprite: {fileID: 0}
   otherObject: {fileID: 0}
   hitSound: {fileID: 0}
-  penalty: 5
+  penalty: 2
 --- !u!61 &4032484470909066193
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -129,3 +130,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.092468, y: 0.54249996}
   m_EdgeRadius: 0
+--- !u!50 &-4174355632521478116
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032484470909066197}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: d99e178b058554e69834ddea51e8185a, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

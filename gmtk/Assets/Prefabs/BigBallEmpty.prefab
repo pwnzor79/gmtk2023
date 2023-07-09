@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 500673897854942818}
   - component: {fileID: 500673897854942819}
   - component: {fileID: 500673897854942816}
-  - component: {fileID: 500673897854942820}
+  - component: {fileID: 17505635578313537}
   m_Layer: 0
   m_Name: BigBallEmpty
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &500673897854942820
+--- !u!114 &17505635578313537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
