@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/bobbyScenes/BobbyScene1.unity
     guid: 37db3ae39cee66e45b0fcc69c74a0ce3
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 993afef4ae2fc2f4c915b988683fee64
   m_configObjects: {}

@@ -29,4 +29,9 @@ public class StartSceneScript : MonoBehaviour
         Application.Quit();
         Debug.Log("why am i still alive?");
     }
+
+    public void GoToCredits()
+    {
+        SceneManager.LoadScene("CreditsScene");
+    }
 }
