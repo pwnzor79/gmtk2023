@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DamageUIScript : MonoBehaviour
 {
@@ -70,10 +71,12 @@ public class DamageUIScript : MonoBehaviour
                 case 5:
                     //set animation to 0Damage
                     spriteRenderer.sprite = fiveDamage;
+                    SceneManager.LoadScene("LoseScene");
                     break;
 
                 default:
                     spriteRenderer.sprite = fiveDamage;
+                    SceneManager.LoadScene("LoseScene");
                     break;
             }
         }

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 461ca2f37dada334eb15b98601d26fe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -171,6 +171,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3f01db1b-934c-4792-af81-d4d2d62757d6
     m_ActionName: Player/Aim[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7095fa7b-381a-405e-839d-063b5ed5fed3
+    m_ActionName: Player/Brake[/Keyboard/space,/Mouse/middleButton,/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
