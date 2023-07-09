@@ -29,7 +29,7 @@ public class UITimeScriptPE : MonoBehaviour
         if (time && !grade)
         {
             //https://docs.unity3d.com/2017.1/Documentation/ScriptReference/UI.Text-text.html
-            text.text = ($"{levelTime:F2} / ");
+            text.text = ($"{levelTime:F2}");
         }
         else if (grade)
         {
