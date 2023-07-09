@@ -32,17 +32,24 @@ public class UITimeScriptPE : MonoBehaviour
         if (time && !grade)
         {
             //https://docs.unity3d.com/2017.1/Documentation/ScriptReference/UI.Text-text.html
-            text.text = ($"{levelTime:F2}");
+            if (index == 0)
+            {
+                text.text = ($"{(200 - levelTime):F2}");
+            }
+            else
+            {
+                text.text = ($"{(80 - levelTime):F2}");
+            }
         }
         else if (grade)
         {
             if (index == 0)
             {
-                if (levelTime + (damage * 5) < 32)
+                if ((200 - levelTime) + (damage * 5) < 32)
                 {
                     text.text = "A";
                 }
-                if (levelTime + (damage * 5) < 42)
+                if ((200 - levelTime) + (damage * 5) < 42)
                 {
                     text.text = "B";
                 }
@@ -79,11 +86,11 @@ public class UITimeScriptPE : MonoBehaviour
             }
             if (index == 1)
             {
-                if (levelTime + (damage * 5) < 47)
+                if ((80 - levelTime) + (damage * 5) < 47)
                 {
                     text.text = "A";
                 }
-                if (levelTime + (damage * 5) < 57)
+                if ((80 - levelTime) + (damage * 5) < 57)
                 {
                     text.text = "B";
                 }
