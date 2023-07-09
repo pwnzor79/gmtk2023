@@ -847,7 +847,7 @@ MonoBehaviour:
   A: {fileID: 148003156}
   B: {fileID: 1805095277}
   C: {fileID: 1704667001}
-  index: 1
+  index: 0
   levelTime: 0
   damage: 0
 --- !u!1 &874379677
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   A: {fileID: 148003156}
   B: {fileID: 1805095277}
   C: {fileID: 1704667001}
-  index: 2
+  index: 1
   levelTime: 0
   damage: 0
 --- !u!114 &1167789072
