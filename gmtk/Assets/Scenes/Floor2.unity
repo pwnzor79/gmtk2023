@@ -5151,6 +5151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollingRigidbody: {fileID: 524935209}
+  collideVelocity: 0
 --- !u!61 &524935208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5622,6 +5623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollingRigidbody: {fileID: 593580630}
+  collideVelocity: 0
 --- !u!61 &593580629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6542,6 +6544,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -74.572
       objectReference: {fileID: 0}
+    - target: {fileID: 7385392181205417526, guid: f863804f1c5d54c28b942edc817c51a0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7385392181205417527, guid: f863804f1c5d54c28b942edc817c51a0, type: 3}
       propertyPath: m_Name
       value: deskNoComputer (35)
@@ -6886,6 +6892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollingRigidbody: {fileID: 727544546}
+  collideVelocity: 0
 --- !u!61 &727544545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10576,6 +10583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollingRigidbody: {fileID: 987739386}
+  collideVelocity: 0
 --- !u!61 &987739385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12077,6 +12085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollingRigidbody: {fileID: 1121001484}
+  collideVelocity: 0
 --- !u!61 &1121001483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16729,6 +16738,22 @@ PrefabInstance:
     - target: {fileID: 5244931228041775062, guid: 9fde07efee5a8495ca130f42c0fffc0e, type: 3}
       propertyPath: m_Name
       value: Wall (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244931228041775063, guid: 9fde07efee5a8495ca130f42c0fffc0e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.14902993
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244931228041775063, guid: 9fde07efee5a8495ca130f42c0fffc0e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.14902993
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244931228041775063, guid: 9fde07efee5a8495ca130f42c0fffc0e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244931228041775063, guid: 9fde07efee5a8495ca130f42c0fffc0e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fde07efee5a8495ca130f42c0fffc0e, type: 3}
