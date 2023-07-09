@@ -273,16 +273,16 @@ MonoBehaviour:
   rightShinL: {fileID: 5805841610028130966}
   rightShinR: {fileID: 2749453514077550738}
   forceMultiplier: 1
-  brakeMultiplier: 20
+  collideVelocity: 0
   torqueMultiplier: 0.5
   kickableAngle: 180
-  spinStartAngle: 110
-  maxCursorAngle: 300
+  spinStartAngle: 200
+  maxCursorAngle: 320
   mouse: {fileID: 0}
   leftLeg: {fileID: 4966573222929469818}
   rightLeg: {fileID: 3801354083600127737}
   legSpeed: 20
-  legAngle: 90
+  legAngle: 70
 --- !u!58 &5028706046374055980
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -28,8 +28,12 @@ public class PlayerController : IRolling
     [SerializeField]
     public float forceMultiplier;
 
+    [SerializeField] private float spinMultiplier;
+
     [SerializeField]
-    public float brakeMultiplier;
+    public float collideVelocity;
+
+
 
     [SerializeField] private float torqueMultiplier;
 
@@ -115,7 +119,7 @@ public class PlayerController : IRolling
                     leftShinR.SetActive(true);
                 }
                 int direction = leftSide ? -1 : 1;
-                rollingRigidbody.AddForceAtPosition(direction * this.transform.right * forceMultiplier, forcePoint, ForceMode2D.Impulse);
+                rollingRigidbody.AddForceAtPosition(direction * this.transform.right * spinMultiplier, forcePoint, ForceMode2D.Impulse);
             }
             else
             {
@@ -149,7 +153,7 @@ public class PlayerController : IRolling
                     rightShinR.SetActive(true);
                 }
                 int direction = leftSide ? -1 : 1;
-                rollingRigidbody.AddForceAtPosition(direction * this.transform.right * forceMultiplier, forcePoint, ForceMode2D.Impulse);
+                rollingRigidbody.AddForceAtPosition(direction * this.transform.right * spinMultiplier, forcePoint, ForceMode2D.Impulse);
             }
             else
             {
@@ -186,18 +190,15 @@ public class PlayerController : IRolling
         }
     }
 
-    private Vector2 CalculateBrakeForce(Vector3 brakePoint, Vector2 mouseVector)
-    {
-        float amount = Mathf.Min(brakeMultiplier, Vector2.Dot(rollingRigidbody.transform.up, rollingRigidbody.GetRelativePointVelocity(brakePoint)));
-        return amount * -rollingRigidbody.transform.up;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ICollidable collidable = collision.collider.gameObject.GetComponent<ICollidable>();
         if (collidable != null)
         {
-            collidable.Collide();
+            if (rollingRigidbody.velocity.magnitude >= collideVelocity)
+            {
+                gameManager.damage += collidable.Collide();
+            }
         }
     }
 

@@ -6,7 +6,7 @@ public class IRolling : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rollingRigidbody;
 
-    private GameManager gameManager;
+    protected GameManager gameManager;
     private FrictionArea currentArea;
 
     virtual protected void Start()
