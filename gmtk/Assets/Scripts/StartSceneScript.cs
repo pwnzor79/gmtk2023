@@ -20,6 +20,7 @@ public class StartSceneScript : MonoBehaviour
     public void StartGame()
     {
         //SceneManager.LoadScene("Floor1");
+        //GameManager.instance.currentLevel = "Test Level";
         SceneManager.LoadScene("Test Level");
     }
 
@@ -33,5 +34,11 @@ public class StartSceneScript : MonoBehaviour
     public void GoToCredits()
     {
         SceneManager.LoadScene("CreditsScene");
+    }
+
+    public void RestartLevel()
+    {
+        //give gameManager a string for level name, and have it maintain its current level, go to this level.
+        SceneManager.LoadScene(GameManager.instance.currentLevel);
     }
 }

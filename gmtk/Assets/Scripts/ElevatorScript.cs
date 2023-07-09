@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class ElevatorScript : MonoBehaviour
 {
+
+    public string nextLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,7 @@ public class ElevatorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameManager.instance.currentLevel = nextLevel;
         SceneManager.LoadScene("Floor2");
     }
 }

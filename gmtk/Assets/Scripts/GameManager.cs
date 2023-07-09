@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public PlayerController playerController;
 
+    [SerializeField]
+    public string currentLevel;
+
     public FrictionArea currentFrictionArea;
 
     //STORE THE DEFAULT VALUES FOR PLAYER DRAG

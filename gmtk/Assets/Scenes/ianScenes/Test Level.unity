@@ -4191,6 +4191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3481fa58772fe7246b8fafc380d1e690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevel: 
 --- !u!1001 &1061746890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7097,6 +7098,10 @@ PrefabInstance:
     - target: {fileID: 3169924596288414215, guid: f04b89913583f4cb2845a05f21d7d4d0, type: 3}
       propertyPath: time
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169924596288414215, guid: f04b89913583f4cb2845a05f21d7d4d0, type: 3}
+      propertyPath: currentLevel
+      value: Test Level
       objectReference: {fileID: 0}
     - target: {fileID: 3169924596288414215, guid: f04b89913583f4cb2845a05f21d7d4d0, type: 3}
       propertyPath: playerController
