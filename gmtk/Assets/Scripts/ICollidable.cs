@@ -18,12 +18,17 @@ public class ICollidable : MonoBehaviour
         }
         if (hitSound != null)
         {
+            Debug.Log("playing sound");
             hitSound.Play();
+            hitSound = null;
         }
         if (otherObject != null)
         {
+            //do destroy(this.gameobject, delayTime) instead of setActive, make sure the watercooler has its own sprite to disable it.
+            Destroy(this.gameObject, 0.4f);
+            Destroy(collidableRenderer);
             otherObject.SetActive(true);
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
         }
         int returnValue = penalty;
         penalty = 0;
