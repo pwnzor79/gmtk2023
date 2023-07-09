@@ -13,10 +13,17 @@ public class PlayerController : IRolling
     public GameObject rightPoint;
 
     [SerializeField]
-    public GameObject leftBrake;
+    public GameObject leftSpin;
 
     [SerializeField]
-    public GameObject rightBrake;
+    public GameObject rightSpin;
+
+    [SerializeField] private GameObject leftShin;
+    [SerializeField] private GameObject leftShinL;
+    [SerializeField] private GameObject leftShinR;
+    [SerializeField] private GameObject rightShin;
+    [SerializeField] private GameObject rightShinL;
+    [SerializeField] private GameObject rightShinR;
 
     [SerializeField]
     public float forceMultiplier;
@@ -27,6 +34,9 @@ public class PlayerController : IRolling
     [SerializeField] private float torqueMultiplier;
 
     [SerializeField] private float kickableAngle;
+    [SerializeField] private float spinStartAngle;
+    [SerializeField] private float maxCursorAngle;
+
 
     [SerializeField]
     public GameObject mouse;
@@ -34,29 +44,43 @@ public class PlayerController : IRolling
     [SerializeField] private GameObject leftLeg;
     [SerializeField] private GameObject rightLeg;
     [SerializeField] private float legSpeed;
+    [SerializeField] private float legAngle;
 
-    private bool canKick;
-
-    private float kickableDotProduct;
+    private bool inKickRange;
+    private bool inClickRange;
+    private bool inSpinRange;
+    private bool inLegRange;
+    private bool leftSide;
 
     private bool leftFootDown = false;
     private bool rightFootDown = false;
 
 
-
-    override protected void Start()
+    protected override void Start()
     {
         base.Start();
-        kickableDotProduct = Mathf.Abs(Mathf.Cos(kickableAngle));
+        leftShin.SetActive(false);
+        leftShinL.SetActive(false);
+        leftShinR.SetActive(false);
+
+        rightShin.SetActive(false);
+        rightShinL.SetActive(false);
+        rightShinR.SetActive(false);
     }
 
     private void FixedUpdate()
     {
         Vector2 mouseVector = mouse.transform.position - rollingRigidbody.transform.position;
-        canKick = (Vector2.Angle(-rollingRigidbody.transform.up, mouseVector) < kickableAngle / 2);
+        float mouseAngle = Vector2.Angle(-rollingRigidbody.transform.up, mouseVector);
+        inKickRange =  mouseAngle < (kickableAngle / 2);
+        inClickRange = mouseAngle < (maxCursorAngle / 2);
+        inSpinRange = mouseAngle > (spinStartAngle / 2);
+        inLegRange = mouseAngle < (legAngle / 2);
+        leftSide = Vector2.SignedAngle(-rollingRigidbody.transform.up, mouseVector) > 0;
+
         float targetAngle;
         float currentAngle = leftLeg.transform.localEulerAngles.z;
-        if (canKick)
+        if (inClickRange)
         {
             targetAngle = Vector2.SignedAngle(-rollingRigidbody.transform.up, mouseVector);
         }
@@ -65,60 +89,101 @@ public class PlayerController : IRolling
             targetAngle = 0;
         }
         float angle = Mathf.LerpAngle(currentAngle, targetAngle, Time.deltaTime * legSpeed);
-        Debug.Log(angle);
+        angle += 180;
+        angle %= 360;
+        angle = Mathf.Clamp(angle, 180 - (legAngle / 2), 180 + (legAngle / 2));
+        angle -= 180;
+
         leftLeg.transform.localEulerAngles = new Vector3(0, 0, angle);
         rightLeg.transform.localEulerAngles = leftLeg.transform.localEulerAngles;
     }
 
     public void leftFoot(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && inClickRange)
         {
-            leftFootDown = true;
-            AddForce(leftPoint.transform.position);
+            Vector3 forcePoint;
+            if (inSpinRange)
+            {
+                forcePoint = leftSpin.transform.position;
+                if (leftSide)
+                {
+                    leftShinL.SetActive(true);
+                }
+                else
+                {
+                    leftShinR.SetActive(true);
+                }
+                int direction = leftSide ? -1 : 1;
+                rollingRigidbody.AddForceAtPosition(direction * this.transform.right * forceMultiplier, forcePoint, ForceMode2D.Impulse);
+            }
+            else
+            {
+                leftShin.SetActive(true);
+                forcePoint = leftPoint.transform.position;
+                AddForce(forcePoint);
+            }
         }
         if (context.canceled)
         {
-            leftFootDown = false;
+            leftShin.SetActive(false);
+            leftShinL.SetActive(false);
+            leftShinR.SetActive(false);
         }
     }
 
     public void rightFoot(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && inClickRange)
         {
-            leftFootDown = true;
-            AddForce(rightPoint.transform.position);
+            Vector3 forcePoint;
+            if (inSpinRange)
+            {
+                forcePoint = rightSpin.transform.position;
+                if(leftSide)
+                {
+                    rightShinL.SetActive(true);
+                }
+                else
+                {
+                    rightShinR.SetActive(true);
+                }
+                int direction = leftSide ? -1 : 1;
+                rollingRigidbody.AddForceAtPosition(direction * this.transform.right * forceMultiplier, forcePoint, ForceMode2D.Impulse);
+            }
+            else
+            {
+                forcePoint = rightPoint.transform.position;
+                rightShin.SetActive(true);
+                AddForce(forcePoint);
+            }
+            
         }
         if (context.canceled)
         {
-            leftFootDown = false;
+            rightShin.SetActive(false);
+            rightShinL.SetActive(false);
+            rightShinR.SetActive(false);
         }
-    }
-
-    public void EngageBrake(InputAction.CallbackContext context)
-    {
-   
     }
 
     private void AddForce(Vector3 forcePoint)
     {
         Vector2 mouseVectorToHips = mouse.transform.position - forcePoint;
-        Vector2 force;
-        if (canKick)
-        {
-            force = CalculateKickForce(forcePoint, mouseVectorToHips);
-            rollingRigidbody.AddForceAtPosition(force, forcePoint, ForceMode2D.Impulse);
-        }
-        else
-        {
-            StartCoroutine(Brake(forcePoint, mouseVectorToHips));
-        }
+        Vector2 force = CalculateKickForce(forcePoint, mouseVectorToHips);
+        rollingRigidbody.AddForceAtPosition(force, forcePoint, ForceMode2D.Impulse);
     }
 
     private Vector2 CalculateKickForce(Vector3 kickPoint, Vector2 mouseVector)
     {
-        return mouseVector.normalized * -forceMultiplier;
+        if (inKickRange)
+        {
+            return mouseVector.normalized * -forceMultiplier;
+        }
+        else
+        {
+            return RadianToVector2((kickableAngle / 2) * Mathf.Deg2Rad) * rollingRigidbody.transform.up * -forceMultiplier;
+        }
     }
 
     private Vector2 CalculateBrakeForce(Vector3 brakePoint, Vector2 mouseVector)
@@ -136,26 +201,9 @@ public class PlayerController : IRolling
         }
     }
 
-
-    private IEnumerator Brake(Vector3 brakePoint, Vector2 mouseVector)
+    //Bunny83 on unity forms
+    public static Vector2 RadianToVector2(float radian)
     {
-        /*
-        while (leftFootDown || rightFootDown)
-        {
-            if (leftFootDown)
-            {
-                Vector2 force = CalculateBrakeForce(leftBrake.transform.position, mouseVector);
-                rollingRigidbody.AddForceAtPosition(force, leftBrake.transform.position, ForceMode2D.Force);
-            }
-            if (rightFootDown)
-            {
-                Vector2 force = CalculateBrakeForce(rightBrake.transform.position, mouseVector);
-                rollingRigidbody.AddForceAtPosition(force, rightBrake.transform.position, ForceMode2D.Force);
-            }
-            yield return new WaitForFixedUpdate();
-        }
-        */
-        yield return null;
+        return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
     }
-
 }

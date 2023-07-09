@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6888681860969753129}
   - component: {fileID: 6888681860969753131}
   - component: {fileID: 6888681860969753128}
+  - component: {fileID: 1098449879340679655}
   m_Layer: 0
   m_Name: DamageUI
   m_TagString: Untagged
@@ -104,3 +105,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1098449879340679655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888681860969753134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cd4aed78638bd4086c17640dc12154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6888681860969753128}
+  zeroDamage: {fileID: 21300000, guid: c1987a12144330f4381c592649773062, type: 3}
+  oneDamage: {fileID: 21300000, guid: 23efc09f5b5269349b5413ff4bb894d6, type: 3}
+  twoDamage: {fileID: 21300000, guid: d80cc1a11f0421742992279a9f6224fb, type: 3}
+  threeDamage: {fileID: 21300000, guid: 5ed8be76a9904e44ab7308f8a6a47bf2, type: 3}
+  fourDamage: {fileID: 21300000, guid: bf02e6f8d460c244f8ecb242284fc5a8, type: 3}
+  fiveDamage: {fileID: 21300000, guid: 59348ed9ef078ea4199ea073c37ae199, type: 3}
