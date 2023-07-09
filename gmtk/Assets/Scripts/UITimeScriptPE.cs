@@ -11,6 +11,9 @@ public class UITimeScriptPE : MonoBehaviour
     public Text text;
     public bool time = true;
     public bool grade = false;
+    public GameObject A;
+    public GameObject B;
+    public GameObject C;
 
     public int index;
 
@@ -33,7 +36,62 @@ public class UITimeScriptPE : MonoBehaviour
         }
         else if (grade)
         {
-         //   if (GameManager.instance.times[index] )
+            if (index == 0)
+            {
+                if (levelTime + (damage * 5) < 32)
+                {
+                    text.text = "A";
+                }
+                if (levelTime + (damage * 5) < 42)
+                {
+                    text.text = "B";
+                }
+                else
+                {
+                    text.text = "C";
+                }
+                if (text.text.Equals("B"))
+                {
+                    B.SetActive(true);
+                }
+                else if (text.text.Equals("A"))
+                {
+                    if (GameManager.instance.times[1] + (GameManager.instance.damages[1] * 5) < 47)
+                    {
+                        A.SetActive(true);
+                    }
+                    else
+                    {
+                        B.SetActive(true);
+                    }
+                }
+                else
+                {
+                    if (GameManager.instance.times[1] + (GameManager.instance.damages[1] * 5) < 57)
+                    {
+                        B.SetActive(true);
+                    }
+                    else
+                    {
+                        C.SetActive(true);
+                    }
+                }
+            }
+            if (index == 1)
+            {
+                if (levelTime + (damage * 5) < 47)
+                {
+                    text.text = "A";
+                }
+                if (levelTime + (damage * 5) < 57)
+                {
+                    text.text = "B";
+                }
+                else
+                {
+                    text.text = "C";
+                }
+            }
         }
         else
         {
