@@ -23,7 +23,7 @@ public class UITimeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        levelTime = GameManager.instance.time;
     }
 
     private void FixedUpdate()

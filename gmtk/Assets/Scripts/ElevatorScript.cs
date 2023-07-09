@@ -13,6 +13,8 @@ public class ElevatorScript : MonoBehaviour
 
     public int thisLevel;
 
+    public UITimeScript timeScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,6 @@ public class ElevatorScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameManager.instance.currentLevel = nextLevel;
-        GameManager.instance.loadScene(nextLevel, nextLevelTime, thisLevel);
+        GameManager.instance.loadScene(nextLevel, timeScript.timeRemaining, nextLevelTime, thisLevel);
     }
 }

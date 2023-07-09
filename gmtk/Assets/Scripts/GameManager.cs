@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour
         damages = new int[2];
     }
 
-    public void loadScene(string sceneName, float time, int pastLevel)
+    public void loadScene(string sceneName, float timeRemaining,  float time, int pastLevel)
     {
         SceneManager.LoadScene(sceneName);
-        times[pastLevel - 1] = this.time;
+        times[pastLevel - 1] = timeRemaining;
         damages[pastLevel - 1] = damage;
         damage = 0;
         this.time = time;
