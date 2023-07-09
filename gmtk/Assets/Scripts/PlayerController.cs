@@ -30,6 +30,14 @@ public class PlayerController : IRolling
     [SerializeField]
     public GameObject mouse;
 
+    [SerializeField] private GameObject leftLeg;
+    [SerializeField] private GameObject rightLeg;
+    [SerializeField] private float maxLegAngle;
+    [SerializeField] private float legRotationSpeed;
+
+
+    private bool canKick;
+
     private float kickableDotProduct;
 
     private bool leftFootDown = false;
@@ -41,6 +49,27 @@ public class PlayerController : IRolling
     {
         base.Start();
         kickableDotProduct = Mathf.Abs(Mathf.Cos(kickableAngle));
+    }
+
+    private void Update()
+    {
+        Vector2 mouseVector = mouse.transform.position - rollingRigidbody.transform.position;
+        Debug.Log(Vector2.Angle(-rollingRigidbody.transform.up, mouseVector));
+
+        Vector3 targetRotation;
+        if (Vector2.Angle(-rollingRigidbody.transform.up, mouseVector) < maxLegAngle / 2)
+        {
+            targetRotation = Quaternion.LookRotation(-Vector3.forward, -mouseVector).eulerAngles;
+        }
+        else
+        {
+            targetRotation = this.transform.rotation.eulerAngles;
+        }
+        
+        float newRotationZ = Mathf.LerpAngle(transform.rotation.eulerAngles.z, targetRotation.z, Time.deltaTime * legRotationSpeed);
+        Vector3 newRotation = new Vector3(0, 0, newRotationZ);
+        leftLeg.transform.eulerAngles = newRotation;
+        rightLeg.transform.eulerAngles = newRotation;
     }
 
     public void leftFoot(InputAction.CallbackContext context)
@@ -76,16 +105,16 @@ public class PlayerController : IRolling
 
     private void AddForce(Vector3 forcePoint)
     {
-        Vector2 mouseVector = mouse.transform.position - forcePoint;
+        Vector2 mouseVectorToHips = mouse.transform.position - forcePoint;
         Vector2 force;
-        if (Vector2.Angle(-rollingRigidbody.transform.up, mouseVector) < kickableAngle / 2)
+        if (Vector2.Angle(-rollingRigidbody.transform.up, mouseVectorToHips) < kickableAngle / 2)
         {
-            force = CalculateKickForce(forcePoint, mouseVector);
+            force = CalculateKickForce(forcePoint, mouseVectorToHips);
             rollingRigidbody.AddForceAtPosition(force, forcePoint, ForceMode2D.Impulse);
         }
         else
         {
-            StartCoroutine(Brake(forcePoint, mouseVector));
+            StartCoroutine(Brake(forcePoint, mouseVectorToHips));
         }
     }
 
