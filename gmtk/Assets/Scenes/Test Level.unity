@@ -8347,6 +8347,10 @@ PrefabInstance:
       propertyPath: timeScript
       value: 
       objectReference: {fileID: 2092105308}
+    - target: {fileID: 3311768661693681029, guid: 6400fc479d9b04e788b72450538cb767, type: 3}
+      propertyPath: nextLevelTime
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3311768661693681032, guid: 6400fc479d9b04e788b72450538cb767, type: 3}
       propertyPath: m_RootOrder
       value: 132
