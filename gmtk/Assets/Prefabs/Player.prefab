@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollingRigidbody: {fileID: 4957829649813574938}
+  collideVelocity: 0
   leftPoint: {fileID: 2476616804610301023}
   rightPoint: {fileID: 2476616804180765214}
   leftSpin: {fileID: 6618875995884648780}
@@ -273,7 +274,7 @@ MonoBehaviour:
   rightShinL: {fileID: 5805841610028130966}
   rightShinR: {fileID: 2749453514077550738}
   forceMultiplier: 1
-  collideVelocity: 0
+  spinMultiplier: 0
   torqueMultiplier: 0.5
   kickableAngle: 180
   spinStartAngle: 200
